@@ -1,9 +1,10 @@
-package com.cydeo.tests.day5_testNG_intro_dropdowns;
+package com.cydeo.tests.day6_alerts_iframes_windows;
 
 import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -42,9 +43,31 @@ public class T6_SelectingDate {
     selectMonth.selectByValue("2");
 
 
-    Select selectDate=new Select(driver.findElement(By.xpath("//select[@id='day']")));
-    selectDate.selectByIndex(1);
+    Select selectDay=new Select(driver.findElement(By.xpath("//select[@id='day']")));
+    selectDay.selectByIndex(1);
+
+    //creating expected values
+    String expectedYear="1981";
+    String expectedMonth="March";
+    String expectedDay="2";
+
+    //getting actual values from browser
+    String actualYear=selectYear.getFirstSelectedOption().getText();
+    String actualMonth=selectMonth.getFirstSelectedOption().getText();
+    String actualDay=selectDay.getFirstSelectedOption().getText();
+
+    //create assertions
+    Assert.assertTrue(actualYear.equals(expectedYear));
+    Assert.assertEquals(actualMonth,expectedMonth);
+    Assert.assertEquals(actualDay,expectedDay);
+
+
     }
+
+    /*@AfterMethod
+    public void teardownMethod(){
+        driver.close();
+    }*/
 }
 /*
 

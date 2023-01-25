@@ -1,4 +1,4 @@
-package com.cydeo.tests.day5_testNG_intro_dropdowns;
+package com.cydeo.tests.day6_alerts_iframes_windows;
 
 import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
@@ -34,7 +34,7 @@ public class T7_SelectingValue {
 
     //4. Select Facebook from dropdown
     Select facebook=new Select(driver.findElement(By.xpath("//a[@class='dropdown-item'](3)")));
-    // facebook.selectByVisibleText("Facebook");
+    facebook.getOptions();
     }
 
 

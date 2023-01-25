@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="regression suite">
+    <test name="Task1_Registration" >
+        <classes>
+            <class name="com.cydeo.tests.day10_upload_actions_jsexecuter.Task1_RegistrationForm" />
+        </classes>
+    </test>
+
+    <test name="Task2_Task3">
+        <classes>
+            <class name="com.cydeo.tests.day10_upload_actions_jsexecuter.Task2_UploadPractice"/>
+            <class name="com.cydeo.tests.day10_upload_actions_jsexecuter.Task3_HoverTest"/>
+        </classes>
+    </test>
+    <test name="test package"   >
+        <packages>
+            <package name="com.cydeo.tests.day10_upload_actions_jsexecuter" />
+        </packages>
+    </test>
+
+
+
+
+</suite>

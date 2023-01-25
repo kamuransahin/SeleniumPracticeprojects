@@ -1,4 +1,4 @@
-package com.cydeo.tests.day5_testNG_intro_dropdowns;
+package com.cydeo.tests.day6_alerts_iframes_windows;
 
 import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
@@ -37,16 +37,16 @@ public class T5_SelectingState {
         Select selectState = new Select(driver.findElement(By.xpath("//select[@id='state']")));
         selectState.selectByVisibleText("Illinois");
 
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
         //4. Select Virginia
         //Select selectVirginia=new Select(driver.findElement(By.xpath("//select[@id='state']")));
-        selectState.selectByVisibleText("Virginia");
+        selectState.selectByValue("VA");
 
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
         //5. Select California
-        selectState.selectByVisibleText("California");
+        selectState.selectByIndex(5);
 
         //6. Verify final selected option is California.
         WebElement lastStateSelection = selectState.getFirstSelectedOption();
