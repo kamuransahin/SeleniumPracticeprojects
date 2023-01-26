@@ -1,8 +1,9 @@
-package com.cydeo.tests.day10_upload_actions_jsexecuter;
+package com.cydeo.tests.day11_actions_jsexecutor;
 
 import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
@@ -18,26 +19,20 @@ public class Task4_5 {
 
 
         BrowserUtils.sleep(2);
-
+        //3- Scroll down to “Powered by CYDEO”
+        //Create object of Actions and pass our "driver"instance
+        Actions actions=new Actions(Driver.getDriver());
         WebElement poweredByCydeo=Driver.getDriver().findElement(By.xpath("//div[@style='text-align: center;']"));
 
-        Actions actions=new Actions(Driver.getDriver());
-
-        //3- Scroll down to “Powered by CYDEO”
-
-        BrowserUtils.sleep(2);
-        actions.moveToElement(poweredByCydeo);
-
-        //4- Scroll using Actions class “moveTo(element)” method
-        actions.moveToElement(poweredByCydeo).perform();
-       // actions.keyDown("Powered by ").perform();
+       //4- Scroll using Actions class “moveTo(element)” method
+        actions.moveToElement(poweredByCydeo).pause(2000).perform();
 
         //TC #5: Scroll practice 2
         //1- Continue from where the Task 4 is left in the same test.
         //2- Scroll back up to “Home” link using PageUP button
-        WebElement homeLink=Driver.getDriver().findElement(By.xpath("//a[@class='nav-link']"));
-        //actions.sendKeys().keyUp(Keys.PAGE_UP).perform();
-        actions.moveToElement(homeLink);
+        actions.sendKeys(Keys.PAGE_UP,Keys.PAGE_UP).perform();
+       // WebElement homeLink=Driver.getDriver().findElement(By.xpath("//a[@class='nav-link']"));
+       // actions.moveToElement(homeLink);
 
 
     }

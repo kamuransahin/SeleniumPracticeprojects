@@ -1,4 +1,4 @@
-package com.cydeo.tests.day10_upload_actions_jsexecuter;
+package com.cydeo.tests.day11_actions_jsexecutor;
 
 import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.Driver;
@@ -13,7 +13,7 @@ public class Task7_Scroll_UsingJSExecutor {
     public void scroll_using_jsExecutor(){
 
 
-        //1- Open a chrome browser
+        //1- Open a Chrome browser
         //2- Go to: https://practice.cydeo.com/large
         Driver.getDriver().get("https://practice.cydeo.com/large");
 
@@ -21,6 +21,8 @@ public class Task7_Scroll_UsingJSExecutor {
         WebElement cydeoLink=Driver.getDriver().findElement(By.xpath("//a[.='CYDEO']"));
 
         BrowserUtils.sleep(2);
+
+        //Down casting our driver type to JavascriptExecutor
         JavascriptExecutor js=(JavascriptExecutor) Driver.getDriver();
         js.executeScript("arguments[0].scrollIntoView(true);",cydeoLink);
 
