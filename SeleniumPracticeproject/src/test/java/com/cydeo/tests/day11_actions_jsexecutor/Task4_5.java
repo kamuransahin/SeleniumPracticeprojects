@@ -13,7 +13,7 @@ public class Task4_5 {
     @Test
     public void scroll_test(){
 
-        //1- Open a chrome browser
+        //1- Open a Chrome browser
         //2- Go to: https://practice.cydeo.com/
         Driver.getDriver().get("https://practice.cydeo.com");
 
@@ -30,7 +30,7 @@ public class Task4_5 {
         //TC #5: Scroll practice 2
         //1- Continue from where the Task 4 is left in the same test.
         //2- Scroll back up to “Home” link using PageUP button
-        actions.sendKeys(Keys.PAGE_UP,Keys.PAGE_UP).perform();
+        actions.sendKeys(Keys.PAGE_UP,Keys.PAGE_UP,Keys.PAGE_UP).perform();
        // WebElement homeLink=Driver.getDriver().findElement(By.xpath("//a[@class='nav-link']"));
        // actions.moveToElement(homeLink);
 

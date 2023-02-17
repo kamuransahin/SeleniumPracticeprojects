@@ -31,8 +31,8 @@ public class Task1_Circle_DragAndDrop {
         WebElement bigCircle=Driver.getDriver().findElement(By.xpath("//div[@id='droptarget']"));
 
         Actions actions=new Actions(Driver.getDriver());
-        //actions.dragAndDrop(smallCircle,bigCircle).perform();
-        actions.clickAndHold(smallCircle)
+       // actions.dragAndDrop(smallCircle,bigCircle).perform();
+      actions.clickAndHold(smallCircle)
                 .pause(2000)
                 .moveToElement(bigCircle)
                 .pause(2000)

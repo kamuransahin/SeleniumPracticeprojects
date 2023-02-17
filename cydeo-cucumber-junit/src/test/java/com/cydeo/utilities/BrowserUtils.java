@@ -1,18 +1,16 @@
 package com.cydeo.utilities;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-/*In this class only general utility methods that are not related
-to some specific page.
-*/
 public class BrowserUtils {
+
 
     /*
     This method will accept int(in seconds) and execute Thread.sleep
@@ -41,33 +39,33 @@ public class BrowserUtils {
     • Name: switchWindowAndVerify
     • Return type: void
     */
-    public static void switchWindowAndVerify(WebDriver driver, String expectedInURL, String expectedInTitle) {
+    public static void switchWindowAndVerify(String expectedInURL, String expectedInTitle) {
 
-        Set<String> allWindowsHandles = driver.getWindowHandles();
+        Set<String> allWindowsHandles =Driver.getDriver().getWindowHandles();
 
-        for (String each : driver.getWindowHandles()) {
+        for (String each : Driver.getDriver().getWindowHandles()) {
 
-            driver.switchTo().window(each);
+            Driver.getDriver().switchTo().window(each);
 
-            System.out.println("Current URL:  " + driver.getCurrentUrl());
+            System.out.println("Current URL:  " + Driver.getDriver().getCurrentUrl());
 
-            if (driver.getCurrentUrl().contains(expectedInURL)) {
+            if (Driver.getDriver().getCurrentUrl().contains(expectedInURL)) {
                 break;
             }
         }
 
         //5. Assert: Title contains “expectedTitle”
 
-        String actualTitle = driver.getTitle();
+        String actualTitle = Driver.getDriver().getTitle();
 
         Assert.assertTrue(actualTitle.contains(expectedInTitle));
 
     }
 
     // This method accepts a String "expectedTitle" and Asserts if it is true
-    public static void verifyTitle(WebDriver driver, String expectedTitle) {
+    public static void verifyTitle(String expectedTitle) {
 
-        Assert.assertEquals(driver.getTitle(), expectedTitle);
+        Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
     }
 
     //Creating a utility method for ExplicitWait so we don't have to repeat the lines
@@ -79,4 +77,3 @@ public class BrowserUtils {
 
     }
 }
-
