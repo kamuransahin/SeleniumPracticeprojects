@@ -9,8 +9,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="cydeo-cucumber-junit" />
+        <module name="EU10-CucumberJunit" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cydeo-cucumber-junit" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

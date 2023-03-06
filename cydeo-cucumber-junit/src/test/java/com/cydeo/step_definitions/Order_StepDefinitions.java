@@ -2,15 +2,17 @@ package com.cydeo.step_definitions;
 
 import com.cydeo.pages.BasePage;
 import com.cydeo.pages.OrderPage;
+import com.cydeo.pages.ViewAllOrdersPage;
 import com.cydeo.pages.WebTableLoginPage;
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
-
-import java.util.Base64;
 
 public class Order_StepDefinitions {
     WebTableLoginPage webTableLoginPage=new WebTableLoginPage();
@@ -35,7 +37,22 @@ public class Order_StepDefinitions {
         select.selectByVisibleText(string);
 
     }
+    @And("user enters quantity {int}")
+    public void userEntersQuantity(int quantity) {
 
+        /**accepting int argument and sending it using sendKeys() method
+         * since senKeys() method only accept String, we need to either
+         * concat with "" or send String.valueOf(int);
+         */
+
+        orderPage.inputQuantity.sendKeys(String.valueOf(quantity));
+
+        //clear() method will delete whatever is in the input box
+        orderPage.inputQuantity.clear();
+        //orderPage.inputQuantity.sendKeys(Keys.BACK_SPACE);
+
+        orderPage.inputQuantity.sendKeys(quantity+"");
+    }
 
     /*@When("user enters quantity {string}")
     public void user_enters_quantity(String string) {
@@ -45,41 +62,77 @@ public class Order_StepDefinitions {
     @When("user enters costumer name {string}")
     public void user_enters_costumer_name(String string) {
 
+       orderPage.inputName.sendKeys(string);
+
     }
     @When("user enters street {string}")
     public void user_enters_street(String string) {
+
+        orderPage.inputStreet.sendKeys(string);
 
     }
     @When("user enters city {string}")
     public void user_enters_city(String string) {
 
+        orderPage.inputCity.sendKeys(string);
+
+
     }
     @When("user enters state {string}")
     public void user_enters_state(String string) {
+
+        orderPage.inputState.sendKeys(string);
 
     }
     @When("user enters zipcode {string}")
     public void user_enters_zipcode(String string) {
 
+        orderPage.inputZip.sendKeys(string);
+
     }
     @When("user selects credit card type {string}")
-    public void user_selects_credit_card_type(String string) {
+    public void user_selects_credit_card_type(String expectedCardType) {
+
+     /**  List<WebElement> cardTypes=orderPage.cardType;
+
+        for (WebElement each : cardTypes) {
+            if (each.getAttribute("value").equalsIgnoreCase(expectedCardType)){
+                each.click();
+            }
+        }*/
+        //This line will loop through the list and decide which radio button to click
+        BrowserUtils.clickRadioButton(orderPage.cardType,expectedCardType);
 
     }
     @When("user enters credit card number {string}")
     public void user_enters_credit_card_number(String string) {
+        orderPage.cardNumber.sendKeys(string);
 
     }
     @When("user enters expiry date {string}")
     public void user_enters_expiry_date(String string) {
 
+        orderPage.cardDate.sendKeys(string);
+
+
     }
     @When("user enters process order button")
     public void user_enters_process_order_button() {
 
+        orderPage.processOrderButton.click();
+
     }
 
     @Then("user should see {string} in first row of the web table")
-    public void userShouldSeeInFirstRowOfTheWebTable(String string) {
+    public void userShouldSeeInFirstRowOfTheWebTable(String expectedName) {
+        ViewAllOrdersPage viewAllOrderPage=new ViewAllOrdersPage();
+
+        String actualName=viewAllOrderPage.newCustomerText.getText();
+
+
+        Assert.assertEquals(expectedName,actualName);
     }
+
+
+
 }

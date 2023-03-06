@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class OrderPage extends BasePage{
 
     public OrderPage(){
@@ -31,7 +33,22 @@ public class OrderPage extends BasePage{
     @FindBy(name = "zip")
     public WebElement inputZip;
 
-    @FindBy(name = "number")
-    public WebElement inputNumber;
+    /*@FindBy(xpath = "(//input[@type='radio'])[2]")
+    public WebElement cardType;*/
+
+    @FindBy(name = "card")
+    public List<WebElement> cardType;
+
+    @FindBy(name = "cardNo")
+    public WebElement cardNumber;
+
+    @FindBy(name = "cardExp")
+    public WebElement cardDate;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement processOrderButton;
+
+
+
 
 }

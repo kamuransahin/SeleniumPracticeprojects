@@ -79,7 +79,7 @@ public class T1_2_3_POMPractices {
         //Expected: Sorry, Wrong Email or Password
         Assert.assertTrue(libraryLoginPage.wrongEmailOrPasswordErrorMessage.isDisplayed());
 
-        //Driver.closeDriver();
+        Driver.closeDriver();
     }
 
 }
